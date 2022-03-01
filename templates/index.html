@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Главная страница</title>
+    <link rel="stylesheet" href="../static/style.css">
+</head>
+<body>
+    <main>
+        <h1>Поиск постов</h1>
+        <form action="{{ url_for('page_tag') }}" method="POST">
+            <p>По тегу</p>
+            <select name="tag_select">
+                    <!-- Сдесь начинается цикл for, с помощью него мы сможем получить меню с выбором всех тегов -->
+                    {% for tag in tags %}
+                    <option value="{{ tag }}">{{ tag }}</option>
+                    {% endfor %}
+            </select>
+            <input type="submit" value="Найти" class="button">
+        </form>
+        <hr>
+        <a href="{{ url_for('page_post_create') }}" class="button">Добавить пост</a>
+    </main>
+</body>
+</html>
